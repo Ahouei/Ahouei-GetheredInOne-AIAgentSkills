@@ -1,6 +1,6 @@
 # Ahouei-GetheredInOne-AIAgentSkills
 
-**One repository, 881 ready-to-install agent skills.** A curated set of 49 hand-picked skills (documents, design, mobile and iOS design, accessibility, React, testing, writing, productivity) plus 832 app-integration skills that let an agent work inside tools like Spotify, Slack, Stripe, Notion, HubSpot and hundreds more.
+**One repository, 885 ready-to-install agent skills.** A curated set of 53 hand-picked skills (documents, design, mobile and iOS design, accessibility, React, testing, writing, productivity) plus 832 app-integration skills that let an agent work inside tools like Spotify, Slack, Stripe, Notion, HubSpot and hundreds more.
 
 Everything is a plain folder with a `SKILL.md` file in it, so it works with any agent that supports the Claude Skills format. Claude Code is the primary target.
 
@@ -13,7 +13,7 @@ Everything is a plain folder with a `SKILL.md` file in it, so it works with any 
 - [At a glance](#at-a-glance)
 - [Quick start](#quick-start)
 - [How skills work](#how-skills-work)
-- [The 49 curated skills](#the-49-curated-skills)
+- [The 53 curated skills](#the-53-curated-skills)
 - [The 832 app-integration skills](#the-832-app-integration-skills)
 - [Repository layout](#repository-layout)
 - [Maintaining the collection](#maintaining-the-collection)
@@ -27,11 +27,11 @@ Everything is a plain folder with a `SKILL.md` file in it, so it works with any 
 
 | | Count | Needs an account? |
 |---|---:|---|
-| Curated skills: documents, design, mobile and iOS design, accessibility, React, dev tooling, writing, productivity | 49 | Mostly no |
+| Curated skills: documents, design, mobile and iOS design, accessibility, React, dev tooling, writing, productivity | 53 | Mostly no |
 | App-integration skills (`*-automation`) | 832 | Yes: a Composio account and the Rube MCP server |
 | Support folder (`shared/`, read by the accessibility skills) | 1 | n/a |
 | Slash commands that drive the mobile skills (`commands/`) | 5 | No |
-| **Total skill folders** | **881** (+1 support folder) | |
+| **Total skill folders** | **885** (+1 support folder) | |
 
 Size on disk is about 21 MB, mostly fonts, templates and data files bundled with a few skills (`canvas-design`, `ui-ux-pro-max`, `theme-factory`, the document skills).
 
@@ -47,10 +47,10 @@ cd Ahouei-GetheredInOne-AIAgentSkills
 scripts/install.sh                 # all skills -> ~/.claude/skills (every project)
 ```
 
-Installing all 881 means the agent sees 881 skill descriptions at startup. If you do not use Composio, install the curated set instead:
+Installing all 885 means the agent sees 885 skill descriptions at startup. If you do not use Composio, install the curated set instead:
 
 ```bash
-scripts/install.sh --core          # the 49 curated skills (+ shared/) only
+scripts/install.sh --core          # the 53 curated skills (+ shared/) only
 ```
 
 ### Other ways to install
@@ -100,7 +100,7 @@ The agent reads only the `name` and `description` of every installed skill up fr
 
 ---
 
-## The 49 curated skills
+## The 53 curated skills
 
 ### Documents and files (Anthropic)
 
@@ -184,6 +184,15 @@ Scanning and inspecting need a Chrome the agent can drive and a live URL to test
 | [`raffle-winner-picker`](skills/raffle-winner-picker) | Fair random winner selection from lists or sheets. |
 | [`video-downloader`](skills/video-downloader) | Downloads YouTube videos in chosen quality and format. Respect the platform's terms and copyright. |
 
+### Design craft and motion
+
+| Skill | What it does |
+|---|---|
+| [`premium-web-design`](skills/premium-web-design) | Awwwards-level sites: a named structural concept per site, typography as identity, deep reference research, verified 3D, scroll choreography, and a blacklist of AI-template tells. |
+| [`emil-design-eng`](skills/emil-design-eng) | Design engineering in the spirit of Emil Kowalski: when to animate, custom easing, springs, press feedback, clip-path tricks, gesture physics and performance rules. |
+| [`apple-design`](skills/apple-design) | Apple's fluid-interface principles for the web: response, interruptibility, springs, velocity handoff, momentum, materials, typography and the eight design principles. |
+| [`app-ui-ux-patterns`](skills/app-ui-ux-patterns) | Main-app patterns: bottom tab bars, two-axis theme tokens, sheets for focused actions, and the rule against explanatory sub-text, with a worked example from Leitneria. |
+
 ### Mobile and iOS design
 
 | Skill | What it does |
@@ -239,7 +248,7 @@ Browse the complete list with descriptions in [`docs/CATALOG.md`](docs/CATALOG.m
 .
 ├── README.md
 ├── NOTICE.md                  Sources, licenses and attribution
-├── skills/                    882 folders: 881 skills + shared/
+├── skills/                    886 folders: 885 skills + shared/
 │   ├── <skill-name>/
 │   │   ├── SKILL.md           Required: name, description, instructions
 │   │   └── ...                Optional scripts, templates, references
@@ -271,7 +280,7 @@ To add a skill, create `skills/<name>/SKILL.md` (the `skill-creator` skill in th
 A skill is instructions plus, sometimes, scripts the agent will run. Treat installing one like installing a dependency.
 
 - **Review before you install**, especially skills that ship scripts: `mobile-release-check`, `artifacts-builder`, `docx`, `pdf`, `pptx`, `xlsx`, `mcp-builder`, `skill-creator`, `slack-gif-creator`, `ui-ux-pro-max`, `video-downloader`, `webapp-testing`.
-- **Prefer a small install.** `--core` or named skills expose far less than all 881.
+- **Prefer a small install.** `--core` or named skills expose far less than all 885.
 - **Integration skills touch real accounts** through a third-party gateway. Only connect services you intend to automate, and use the narrowest permissions the service offers.
 - **Content comes from third parties** (see below) and is bundled as found. It was not security-reviewed here.
 - Pin to a commit if you rely on this repository, since skills can change on `main`.
@@ -293,6 +302,7 @@ This repository is a **collection**. It does not relicense anything: each skill 
 | `ios-screens`, `ios-review`, `ios-flows`, `commands/mobile-app-design` | UXKIN (`uxkin/agent`) | MIT (license file in each folder) |
 | `mobile-design-system` | rikucherry1993 (`rikucherry1993/mobile-design-system-skill`) | MIT (license file in the folder) |
 | `mobile-release-check`, `commands/mobile-release-check` | Stefan Petrovici | MIT (license file in each folder) |
+| `premium-web-design`, `emil-design-eng`, `apple-design`, `app-ui-ux-patterns` | Ahouei's own skills | Published by the owner. No license file; ask before reusing outside this collection. |
 | Other curated skills and all `*-automation` skills | Composio's *Awesome Claude Skills* collection | Apache-2.0 for the collection. Individual skills may differ, so check each folder. |
 
 MIT and Apache-2.0 both require keeping the copyright and license notices. The upstream `LICENSE` text for the MIT sources is not copied into every folder, so keep the attribution above and in `NOTICE.md` if you redistribute.
